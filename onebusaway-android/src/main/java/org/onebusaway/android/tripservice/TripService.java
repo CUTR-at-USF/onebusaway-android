@@ -20,7 +20,6 @@ import org.onebusaway.android.util.UIHelp;
 
 import android.app.AlarmManager;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -30,6 +29,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,14 +63,14 @@ public class TripService extends Service {
 
     private ExecutorService mThreadPool;
 
-    private NotificationManager mNM;
+    private NotificationManagerCompat mNM;
 
     private ConcurrentHashMap<Integer, Notification> mNotifications;
 
     @Override
     public void onCreate() {
         mThreadPool = Executors.newSingleThreadExecutor();
-        mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNM = NotificationManagerCompat.from(getApplicationContext());
         mNotifications = new ConcurrentHashMap<Integer, Notification>();
     }
 
