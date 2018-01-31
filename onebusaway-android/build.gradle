@@ -48,8 +48,6 @@ android {
         targetSdkVersion 21
         versionCode 87
         versionName "2.3.2"
-
-        vectorDrawables.useSupportLibrary = true
     }
 
     /**
