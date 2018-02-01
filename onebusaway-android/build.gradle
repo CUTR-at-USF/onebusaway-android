@@ -16,6 +16,9 @@
  */
 
 import groovy.swing.SwingBuilder
+
+System.setProperty('java.awt.headless', 'false')
+
 import org.apache.tools.ant.filters.ConcatFilter
 
 apply plugin: 'com.android.application'
