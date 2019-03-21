@@ -360,6 +360,13 @@ public class ArrivalsListFragment extends ListFragment
                 }
             }
         }
+
+        // Report Stop distance metric
+        if (mStop != null) {
+            Location stopLocation = mStop.getLocation();
+            Location myLocation = Application.getLastKnownLocation(getActivity(), null);
+            ObaAnalytics.trackBusStopDistance(mStopId, myLocation, stopLocation);
+        }
     }
 
     @Override
